@@ -13,7 +13,7 @@ class Displayer
 public:
     Displayer(std::shared_ptr<TextDisplayer> textDisplayer);
 
-    void displayContent(std::shared_ptr<IContent> content, QLabel& label);
+    void displayContent(std::shared_ptr<IContent> content, QLabel &label);
 
 private:
     std::shared_ptr<TextDisplayer> m_textDisplayer;
