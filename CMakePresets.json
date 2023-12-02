@@ -1,0 +1,42 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 1
+    },
+    "configurePresets": [
+        {
+            "name": "Debug",
+            "description": "Debug build and copy resources folder",
+            "generator": "Ninja",
+            "binaryDir": "build-${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "COPY_RESOURCES": "ON"
+            }
+        },
+        {
+            "name": "Release",
+            "description": "Release build and copy resources folder",
+            "generator": "Ninja",
+            "binaryDir": "build-${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "COPY_RESOURCES": "ON"
+            }
+        }
+    ],
+    "buildPresets": [
+      {
+        "name": "DebugBuild",
+        "description": "Build Debug configuration",
+        "configurePreset": "Debug"
+      },
+      {
+        "name": "ReleaseBuild",
+        "description": "Build Release configuration",
+        "configurePreset": "Release"
+      }
+    ]
+}

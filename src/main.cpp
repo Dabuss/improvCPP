@@ -15,9 +15,8 @@
 #include "improvenginelib/TextDisplayer.h"
 #include "improvenginelib/Displayer.h"
 
-
 // Function to be called when the button is clicked
-void generateDisplayImprovContraint(QLabel& label) 
+void generateDisplayImprovContraint(QLabel &label)
 {
     AnimalGenerator ag{};
     std::shared_ptr<IContent> content = ag.generateImprovEngineContent();
@@ -43,15 +42,15 @@ int main(int argc, char *argv[])
     QVBoxLayout mainLayout(&mainWindow);
 
     // Create the top part layout (horizontal layout)
-    QHBoxLayout topLayout(&mainWindow);
+    QHBoxLayout topLayout{};
 
     // Create a vertical layout for the checkbox list
-    QVBoxLayout checkboxLayout(&mainWindow);
-    
+    QVBoxLayout checkboxLayout{};
+
     // Create some checkboxes (you can add more based on your needs)
-    QCheckBox checkbox1("Option 1", &mainWindow);
-    QCheckBox checkbox2("Option 2", &mainWindow);
-    QCheckBox checkbox3("Option 3", &mainWindow);
+    QCheckBox checkbox1("Option 1");
+    QCheckBox checkbox2("Option 2");
+    QCheckBox checkbox3("Option 3");
 
     // Add checkboxes to the layout
     checkboxLayout.addWidget(&checkbox1);
@@ -62,21 +61,18 @@ int main(int argc, char *argv[])
     topLayout.addLayout(&checkboxLayout);
 
     // Create a button and add it to the top layout
-    QPushButton button{"Say Hello", &mainWindow};
+    QPushButton button{"Say Hello"};
     topLayout.addWidget(&button);
 
     // Create a widget for text display
-    QLabel textWidget("Text Display", &mainWindow);
+    QLabel textWidget("Text Display");
 
     // Connect the button click signal to the generateDisplayImprovContraint function
-    QObject::connect(&button, &QPushButton::clicked, [&textWidget]() {
-        generateDisplayImprovContraint(textWidget);
-    });
+    QObject::connect(&button, &QPushButton::clicked, [&textWidget]()
+                     { generateDisplayImprovContraint(textWidget); });
 
     // Create a stacked widget for the bottom part (to switch between different displays)
-    QStackedWidget bottomStackedWidget{&mainWindow};
-
-    // Add the display label to the stacked widget
+    QStackedWidget bottomStackedWidget{};
     bottomStackedWidget.setMinimumHeight(200);
 
     // Add the text widget to the stacked widget
