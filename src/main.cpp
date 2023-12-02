@@ -1,33 +1,37 @@
 #include <QApplication>
-#include <QWidget>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QPushButton>
 #include <QCheckBox>
-#include <QLabel>
-#include <QStackedWidget>
 #include <QFrame>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QPushButton>
+#include <QStackedWidget>
+#include <QVBoxLayout>
+#include <QWidget>
+#include <filesystem>
 
 #include <iostream>
 #include <typeinfo>
 
 #include "improvenginelib/AnimalGenerator.h"
-#include "improvenginelib/TextDisplayer.h"
 #include "improvenginelib/Displayer.h"
+#include "improvenginelib/TextualResourcesFileParser.h"
+#include "improvenginelib/TextDisplayer.h"
 
 // Function to be called when the button is clicked
-void generateDisplayImprovContraint(QLabel &label)
+void generateDisplayImprovContraint(QLabel& label)
 {
-    AnimalGenerator ag{};
+    std::filesystem::path pathToExecutableDirectory = std::filesystem::current_path();
+    TextualResourcesFileParser resources { pathToExecutableDirectory };
+    AnimalGenerator ag { resources.getItem("animals") };
     std::shared_ptr<IContent> content = ag.generateImprovEngineContent();
 
     std::shared_ptr<TextDisplayer> td = std::make_shared<TextDisplayer>();
-    Displayer displayer{td};
+    Displayer displayer { td };
 
     displayer.displayContent(content, label);
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
 
@@ -42,10 +46,10 @@ int main(int argc, char *argv[])
     QVBoxLayout mainLayout(&mainWindow);
 
     // Create the top part layout (horizontal layout)
-    QHBoxLayout topLayout{};
+    QHBoxLayout topLayout {};
 
     // Create a vertical layout for the checkbox list
-    QVBoxLayout checkboxLayout{};
+    QVBoxLayout checkboxLayout {};
 
     // Create some checkboxes (you can add more based on your needs)
     QCheckBox checkbox1("Option 1");
@@ -61,25 +65,24 @@ int main(int argc, char *argv[])
     topLayout.addLayout(&checkboxLayout);
 
     // Create a button and add it to the top layout
-    QPushButton button{"Say Hello"};
+    QPushButton button { "Generate Improv Engine" };
     topLayout.addWidget(&button);
 
     // Create a widget for text display
-    QLabel textWidget("Text Display");
+    QLabel textWidget("...");
 
     // Connect the button click signal to the generateDisplayImprovContraint function
-    QObject::connect(&button, &QPushButton::clicked, [&textWidget]()
-                     { generateDisplayImprovContraint(textWidget); });
+    QObject::connect(&button, &QPushButton::clicked, [&textWidget]() { generateDisplayImprovContraint(textWidget); });
 
     // Create a stacked widget for the bottom part (to switch between different displays)
-    QStackedWidget bottomStackedWidget{};
+    QStackedWidget bottomStackedWidget {};
     bottomStackedWidget.setMinimumHeight(200);
 
     // Add the text widget to the stacked widget
     bottomStackedWidget.addWidget(&textWidget);
 
     // Create a horizontal line using QFrame
-    QFrame line{&mainWindow};
+    QFrame line { &mainWindow };
     line.setFrameShape(QFrame::HLine);
     line.setFrameShadow(QFrame::Sunken);
 
