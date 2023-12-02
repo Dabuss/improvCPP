@@ -12,12 +12,11 @@ class AnimalGenerator : public IImprovEngineGenerator {
 public:
     ~AnimalGenerator() {};
 
-    AnimalGenerator();
+    AnimalGenerator(std::vector<std::string> const &animals);
 
     std::shared_ptr<IContent> generateImprovEngineContent() override;
 
 private:
-    std::string m_pathToAnimalsFile = "resources/animals.json";
     std::vector<std::string> m_animals;
     std::random_device m_rdev;
     std::mt19937 m_rgen;

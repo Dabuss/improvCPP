@@ -3,6 +3,7 @@ add_library(improvenginelib
     improvenginelib/TextDisplayer.cpp
 
     improvenginelib/AnimalGenerator.cpp
+    improvenginelib/TextualResourcesFileParser.cpp
 )
 
 target_include_directories(improvenginelib PUBLIC

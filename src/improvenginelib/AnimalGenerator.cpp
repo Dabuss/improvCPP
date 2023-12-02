@@ -9,38 +9,9 @@
 
 #include "improvenginelib/TextContent.h"
 
-namespace {
 
-std::vector<std::string>
-getVectorOfAnimalsFromFilePath(std::string const& pathToAnimalsFile)
-{
-    std::string ermsg = "File " + pathToAnimalsFile + " doesn't exist.";
-    if (!std::filesystem::exists(pathToAnimalsFile)) {
-        throw std::invalid_argument(ermsg);
-    }
-
-    std::ifstream file(pathToAnimalsFile);
-    if (!file.is_open()) {
-        throw std::invalid_argument(ermsg);
-    }
-
-    Json::Value root;
-    file >> root;
-    Json::Value animalsArray = root["animals"];
-
-    std::vector<std::string> animals;
-    animals.reserve(animalsArray.size());
-    std::transform(animalsArray.begin(), animalsArray.end(),
-        std::back_inserter(animals),
-        [](auto const& animal) { return animal.asString(); });
-
-    return animals;
-}
-
-} // namespace
-
-AnimalGenerator::AnimalGenerator()
-    : m_animals { getVectorOfAnimalsFromFilePath(m_pathToAnimalsFile) }
+AnimalGenerator::AnimalGenerator(std::vector<std::string> const& animals)
+    : m_animals { animals }
     , m_rdev {}
     , m_rgen { m_rdev() }
     , m_iDist { 0, static_cast<int>(m_animals.size() - 1) }
