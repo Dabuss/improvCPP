@@ -7,6 +7,7 @@
 
 #include "improvenginelib/IContent.h"
 #include "improvenginelib/IImprovEngineGenerator.h"
+#include "improvenginelib/RandomVectorSampler.h"
 
 class AnimalGenerator : public IImprovEngineGenerator {
 public:
@@ -20,7 +21,5 @@ public:
 
 private:
     std::vector<std::string> m_animals;
-    std::random_device m_rdev;
-    std::mt19937 m_rgen;
-    std::uniform_int_distribution<int> m_iDist;
+    RandomVectorSampler<std::string> m_randomAnimalSampler;
 };
