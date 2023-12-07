@@ -15,7 +15,7 @@ public:
 
     void generateRandomImpulsion(std::vector<IImprovEngineGenerator::EngineType> improvEngineTypes) const;
 
-    std::vector<IImprovEngineGenerator::EngineType> getEngineTypes() const;
+    std::map<IImprovEngineGenerator::EngineType, std::string> getEngineTypesToEngineNames() const;
 
 private:
     std::vector<std::shared_ptr<IImprovEngineGenerator>> m_improvEngineGenerators;

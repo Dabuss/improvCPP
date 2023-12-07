@@ -5,14 +5,16 @@
 
 #include <json/json.h>
 
-class TextualResourcesFileParser
+#include "improvenginelib/ITextualResourcesFileParser.h"
+
+class TextualResourcesFileParser : public ITextualResourcesFileParser
 {
 public:
     TextualResourcesFileParser(std::filesystem::path const& pathToProjectRoot);
+    ~TextualResourcesFileParser() = default;
 
-    std::vector<std::string> getItem(std::string const& itemName) const;
-
-    std::map<std::string, std::vector<std::string>> getTextualResources() const;
+    std::map<std::string, std::vector<std::string>> getTextualResources() const override;
+    std::vector<std::string> getItem(std::string const & itemName) const override;
 
 private:
     std::map<std::string, std::vector<std::string>> m_textualResources;

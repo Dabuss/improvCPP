@@ -3,7 +3,7 @@ RandomVectorSampler<T>::RandomVectorSampler() : m_generator(std::random_device()
     {}
 
 template <typename T>
-T RandomVectorSampler<T>::sample(std::vector<T> const &data)
+T RandomVectorSampler<T>::sample(std::vector<T> const &data) const
 {
     if (data.empty())
     {

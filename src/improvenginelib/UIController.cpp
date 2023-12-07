@@ -46,13 +46,12 @@ void UIController::setImpulsionGenerator(std::shared_ptr<ImpulsionGenerator> imp
 {
     m_impulsionGenerator = impulsionGenerator;
 
-    std::vector<IImprovEngineGenerator::EngineType> engineTypes = impulsionGenerator->getEngineTypes();
-    m_checkboxes.reserve(engineTypes.size());
+    std::map<IImprovEngineGenerator::EngineType, std::string> engineTypesToEngineNames = impulsionGenerator->getEngineTypesToEngineNames();
+    m_checkboxes.reserve(engineTypesToEngineNames.size());
 
-    for (auto const& engineType : engineTypes)
+    for (auto const& engineTypeToEngineName : engineTypesToEngineNames)
     {
-        std::shared_ptr<QCheckBox> checkbox = std::make_shared<QCheckBox>(
-            QString::fromStdString(IImprovEngineGenerator::EngineNameFromType(engineType)));
+        std::shared_ptr<QCheckBox> checkbox = std::make_shared<QCheckBox>(QString::fromStdString(engineTypeToEngineName.second));
         m_checkboxes.push_back(checkbox);
         m_checkboxLayout.addWidget(checkbox.get());
     }
