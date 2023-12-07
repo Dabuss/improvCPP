@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <typeindex>
 
 #include <QLabel>
 #include <QPushButton>
@@ -13,9 +14,9 @@ class ImpulsionGenerator {
 public:
     ImpulsionGenerator(std::vector<std::shared_ptr<IImprovEngineGenerator>> improvEngineGenerators, std::shared_ptr<Displayer> displayer);
 
-    void generateRandomImpulsion(std::vector<IImprovEngineGenerator::EngineType> improvEngineTypes) const;
+    void generateRandomImpulsion(std::vector<std::type_index> improvEngineTypes) const;
 
-    std::map<IImprovEngineGenerator::EngineType, std::string> getEngineTypesToEngineNames() const;
+    std::map<std::type_index, std::string> getEngineTypesToEngineNames() const;
 
 private:
     std::vector<std::shared_ptr<IImprovEngineGenerator>> m_improvEngineGenerators;

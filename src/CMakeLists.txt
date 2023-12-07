@@ -7,6 +7,7 @@ add_library(improvenginelib
     improvenginelib/RandomVectorSampler.inl
 
     improvenginelib/AnimalGenerator.cpp
+    improvenginelib/BodyPartGenerator.cpp
 )
 
 target_include_directories(improvenginelib PUBLIC
@@ -27,6 +28,6 @@ target_include_directories(improvCPP PRIVATE
 )
 
 target_link_libraries(improvCPP PRIVATE
-    improvenginelib 
+    improvenginelib
     Qt6::Widgets
 )

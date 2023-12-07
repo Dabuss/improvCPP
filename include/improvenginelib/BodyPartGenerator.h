@@ -10,12 +10,12 @@
 #include "improvenginelib/ITextualResourcesFileParser.h"
 #include "improvenginelib/RandomVectorSampler.h"
 
-class AnimalGenerator : public IImprovEngineGenerator
+class BodyPartGenerator : public IImprovEngineGenerator
 {
 public:
-    ~AnimalGenerator() {};
+    ~BodyPartGenerator() {};
 
-    AnimalGenerator(std::shared_ptr<ITextualResourcesFileParser> textualResourcesFileParser,
+    BodyPartGenerator(std::shared_ptr<ITextualResourcesFileParser> textualResourcesFileParser,
         std::shared_ptr<RandomVectorSampler<std::string>> randomAnimalSampler);
 
     std::shared_ptr<IContent> generateImprovEngineContent() const override;
@@ -23,7 +23,7 @@ public:
     std::string getResourcesIdentifier() const override;
 
 private:
-    std::string m_resourceIdentifier = "Animals";
-    std::vector<std::string> m_animals;
-    std::shared_ptr<RandomVectorSampler<std::string>> m_randomAnimalSampler;
+    std::string m_resourceIdentifier = "Parties du corps";
+    std::vector<std::string> m_bodyParts;
+    std::shared_ptr<RandomVectorSampler<std::string>> m_randomBodyPartSampler;
 };
