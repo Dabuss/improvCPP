@@ -61,5 +61,21 @@ void UIController::setImpulsionGenerator(std::shared_ptr<ImpulsionGenerator> imp
 
     // bind RandomImprovEngineGenetor callback to the button
     QObject::connect(m_button.get(), &QPushButton::clicked,
-        [this]() { m_impulsionGenerator->generateRandomImpulsion({}); });
+        [this]()
+        {
+            std::vector<std::type_index> typesToUse;
+            for (auto const& checkBoxToEngineType : m_checkboxesToEngineType)
+            {
+                if (checkBoxToEngineType.first->isChecked())
+                    typesToUse.push_back(checkBoxToEngineType.second);
+            }
+
+            if (typesToUse.empty())
+            {
+                this->m_textOutputLabel->setText(
+                    "Toggle au moins une catégorie pour générer une impulsion.");
+                return;
+            }
+            m_impulsionGenerator->generateRandomImpulsion(typesToUse);
+        });
 }
