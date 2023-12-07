@@ -2,7 +2,6 @@
 BasedOnStyle: WebKit
 BreakBeforeBraces: Allman
 AllowShortFunctionsOnASingleLine: true
-AllowShortFunctionsOnASingleLine: true
 ColumnLimit: 100
 IncludeBlocks: Preserve
 NamespaceIndentation: None

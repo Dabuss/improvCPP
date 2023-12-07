@@ -20,15 +20,11 @@ void ImpulsionGenerator::generateRandomImpulsion(std::vector<IImprovEngineGenera
     m_displayer->displayContent(content);
 }
 
-std::vector<IImprovEngineGenerator::EngineType> ImpulsionGenerator::getEngineTypes() const
+std::map<IImprovEngineGenerator::EngineType, std::string> ImpulsionGenerator::getEngineTypesToEngineNames() const
 {
-    std::vector<IImprovEngineGenerator::EngineType> engineTypes;
-    engineTypes.reserve(m_improvEngineGenerators.size());
+    std::map<IImprovEngineGenerator::EngineType, std::string> engineTypesToEngineNames;
+    for (auto const & improvEngineGenerator : m_improvEngineGenerators)
+        engineTypesToEngineNames[improvEngineGenerator->getEngineType()] = improvEngineGenerator->getResourcesIdentifier();
 
-    std::transform(m_improvEngineGenerators.begin(), m_improvEngineGenerators.end(), std::back_inserter(engineTypes), [](std::shared_ptr<IImprovEngineGenerator> const & improvEngineGenerator)
-    {
-        return improvEngineGenerator->getEngineType();
-    });
-
-    return engineTypes;
+    return engineTypesToEngineNames;
 }

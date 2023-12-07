@@ -3,6 +3,7 @@
 #include "improvenginelib/AnimalGenerator.h"
 #include "improvenginelib/Displayer.h"
 #include "improvenginelib/ImpulsionGenerator.h"
+#include "improvenginelib/RandomVectorSampler.h"
 #include "improvenginelib/TextDisplayer.h"
 #include "improvenginelib/TextualResourcesFileParser.h"
 #include "improvenginelib/UIController.h"
@@ -16,25 +17,17 @@ int main(int argc, char* argv[])
         = std::make_shared<UIController>();
 
     // Resources parser
-    TextualResourcesFileParser textResources {
-        std::filesystem::current_path()
-    };
+    std::shared_ptr<TextualResourcesFileParser> textResources = std::make_shared<TextualResourcesFileParser>(std::filesystem::current_path());
 
     // Content Generators
-    std::shared_ptr<AnimalGenerator> animalGenerator = std::make_shared<
-        AnimalGenerator>(
-        textResources
-            .getTextualResources()[IImprovEngineGenerator::EngineNameFromType(
-                IImprovEngineGenerator::EngineType::animals)]);
+    std::shared_ptr<RandomVectorSampler<std::string>> randomVectorSampler = std::make_shared<RandomVectorSampler<std::string>>();
+    std::shared_ptr<AnimalGenerator> animalGenerator = std::make_shared<AnimalGenerator>(textResources, randomVectorSampler);
 
-    std::vector<std::shared_ptr<IImprovEngineGenerator>>
-        improvEngineGenerators {};
+    std::vector<std::shared_ptr<IImprovEngineGenerator>> improvEngineGenerators {};
     improvEngineGenerators.push_back(animalGenerator);
 
     // Content Displayers
-    std::shared_ptr<TextDisplayer> textDisplayer
-        = std::make_shared<TextDisplayer>(
-            uiController->getTextDisplayerOutputLabel());
+    std::shared_ptr<TextDisplayer> textDisplayer = std::make_shared<TextDisplayer>(uiController->getTextDisplayerOutputLabel());
 
     // displayer
     std::shared_ptr<Displayer> displayer

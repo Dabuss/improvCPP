@@ -14,19 +14,8 @@ public:
         bodyPart
     };
 
-    static std::string EngineNameFromType(EngineType const& engineType)
-    {
-        switch (engineType)
-        {
-        case EngineType::bodyPart:
-            return "Parties du corps";
-        default:
-        case EngineType::animals:
-            return "Animals";
-        }
-    }
-
     virtual ~IImprovEngineGenerator() = default;
-    virtual std::shared_ptr<IContent> generateImprovEngineContent() = 0;
-    virtual EngineType getEngineType() = 0;
+    virtual std::shared_ptr<IContent> generateImprovEngineContent() const = 0;
+    virtual EngineType getEngineType() const = 0;
+    virtual std::string getResourcesIdentifier() const = 0;
 };
