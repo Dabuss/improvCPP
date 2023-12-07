@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <typeindex>
 #include <vector>
 
 #include <QCheckBox>
@@ -30,7 +31,7 @@ private:
     QVBoxLayout m_checkboxLayout;
     QStackedWidget m_bottomLayout;
     QFrame m_line;
-    std::vector<std::shared_ptr<QCheckBox>> m_checkboxes;
+    std::map<std::shared_ptr<QCheckBox>, std::type_index> m_checkboxesToEngineType;
 
     std::shared_ptr<QPushButton> m_button;
     std::shared_ptr<QLabel> m_textOutputLabel;

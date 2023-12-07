@@ -10,7 +10,7 @@ ImpulsionGenerator::ImpulsionGenerator(std::vector<std::shared_ptr<IImprovEngine
     , m_displayer{displayer}
 {}
 
-void ImpulsionGenerator::generateRandomImpulsion(std::vector<IImprovEngineGenerator::EngineType> engineTypes) const
+void ImpulsionGenerator::generateRandomImpulsion(std::vector<std::type_index> engineTypes) const
 {
     RandomVectorSampler<std::shared_ptr<IImprovEngineGenerator>> randomSampler{};
     std::shared_ptr<IImprovEngineGenerator> improEngineGenerator = randomSampler.sample(m_improvEngineGenerators);
@@ -20,11 +20,11 @@ void ImpulsionGenerator::generateRandomImpulsion(std::vector<IImprovEngineGenera
     m_displayer->displayContent(content);
 }
 
-std::map<IImprovEngineGenerator::EngineType, std::string> ImpulsionGenerator::getEngineTypesToEngineNames() const
+std::map<std::type_index, std::string> ImpulsionGenerator::getEngineTypesToEngineNames() const
 {
-    std::map<IImprovEngineGenerator::EngineType, std::string> engineTypesToEngineNames;
+    std::map<std::type_index, std::string> engineTypesToEngineNames;
     for (auto const & improvEngineGenerator : m_improvEngineGenerators)
-        engineTypesToEngineNames[improvEngineGenerator->getEngineType()] = improvEngineGenerator->getResourcesIdentifier();
+        engineTypesToEngineNames[typeid(*improvEngineGenerator)] = improvEngineGenerator->getResourcesIdentifier();
 
     return engineTypesToEngineNames;
 }
