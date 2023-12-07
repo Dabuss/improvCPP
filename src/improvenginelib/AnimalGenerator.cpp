@@ -25,3 +25,8 @@ AnimalGenerator::generateImprovEngineContent()
 {
     return std::make_shared<TextContent>(m_animals[m_iDist(m_rgen)]);
 }
+
+IImprovEngineGenerator::EngineType AnimalGenerator::getEngineType()
+{
+    return IImprovEngineGenerator::EngineType::animals;
+}

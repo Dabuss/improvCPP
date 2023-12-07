@@ -16,6 +16,8 @@ public:
 
     std::shared_ptr<IContent> generateImprovEngineContent() override;
 
+    IImprovEngineGenerator::EngineType getEngineType() override;
+
 private:
     std::vector<std::string> m_animals;
     std::random_device m_rdev;
