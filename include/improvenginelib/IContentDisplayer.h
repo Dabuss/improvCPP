@@ -10,5 +10,5 @@ class IContentDisplayer
 {
 public:
     virtual ~IContentDisplayer() = default;
-    virtual void displayContent(std::shared_ptr<IContent> content, QLabel& label) = 0;
+    virtual void displayContent(std::shared_ptr<IContent> content) = 0;
 };

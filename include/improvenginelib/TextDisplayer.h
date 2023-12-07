@@ -9,7 +9,10 @@ class TextDisplayer : public IContentDisplayer
 {
 public:
     ~TextDisplayer(){};
-    TextDisplayer() {}
+    TextDisplayer(std::shared_ptr<QLabel> label);
 
-    void displayContent(std::shared_ptr<IContent> content, QLabel& label) override;
+    void displayContent(std::shared_ptr<IContent> content) override;
+
+private:
+    std::shared_ptr<QLabel> m_label;
 };

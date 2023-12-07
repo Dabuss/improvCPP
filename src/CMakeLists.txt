@@ -1,9 +1,12 @@
 add_library(improvenginelib
     improvenginelib/Displayer.cpp
     improvenginelib/TextDisplayer.cpp
+    improvenginelib/TextualResourcesFileParser.cpp
+    improvenginelib/ImpulsionGenerator.cpp
+    improvenginelib/UIController.cpp
+    improvenginelib/RandomVectorSampler.inl
 
     improvenginelib/AnimalGenerator.cpp
-    improvenginelib/TextualResourcesFileParser.cpp
 )
 
 target_include_directories(improvenginelib PUBLIC

@@ -1,12 +1,8 @@
 {
-    "animals": [
-        "lion",
-        "elephant",
-        "giraffe",
-        "zebra",
-        "tiger",
-        "penguin",
-        "koala",
-        "snake"
+    "Animals": [
+        "Lion","Dauphin","Papillon","Panda","Girafe","Aigle","Serpent","Kangourou","Hippopotame","Pingouin","Loutre","Crocodile","Chouette","Orque","Koala","Tigre","Éléphant","Gorille","Phoque","Caméléon","Renard","Pélican","Grenouille","Panthère","Poule","Requin","Ours","Léopard","Chimpanzé","Koala","Puma","Lynx","Otarie","Écureuil","Gazelle","Rhino","Tortue","Poisson-clown","Morse","Vautour","Loup","Chèvre","Hérisson","Kookaburra","Fourmilier","Okapi","Suricate","Cobra","Chacal","Vipère","Colibri","Tamanoir","Gibbon","Iguane","Hibou","Chouette effraie","Tarsier","Tapir","Pangolin","Hippocampe","Carcajou","Axolotl","Dugong","Hyrax","Marmotte","Pécari","Belette","Lézard","Toucan","Hermine","Antilope","Perroquet","Belette","Panthère des neiges","Lion de mer","Mésange","Moustique","Mygale","Baleine","Tétard","Paresseux","Narval","Grenouille-taureau","Lémurien","Nudibranche","Albatros","Tapir","Souris","Poussin","Bousier","Panthère","Panda roux","Chacal doré","Gavial","Hérisson laineux","Serpent corail","Étoile de mer","Platypus","Gorille des montagnes","Léopard des neiges","Loup arctique","Cachalot","Girafe réticulée","Lémur à queue annelée","Pélican brun","Marmotte","Macaque","Tarsier fantôme","Rat-taupe nu","Lézard cornu","Marmotte","Pélican gris","Tamanoir","Lézard volant","Panda roux","Oryx","Varan","Gecko","Macaque japonais","Tarsier des Philippines","Tapir de Malaisie","Iguane vert","Panthère de l'Amour","Chouette de Tengmalm","Lézard à collerette","Serpent à sonnette","Loutre de mer","Ornithorynque","Hyène tachetée","Narval","Paresseux à trois doigts"
+    ],
+    "Parties du corps": [
+        "nez", "coude", "tête", "jambe", "orteil", "main", "ventre", "poitrine", "genou", "oreille"
     ]
 }

@@ -1,0 +1,16 @@
+---
+BasedOnStyle: WebKit
+BreakBeforeBraces: Allman
+AllowShortFunctionsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: true
+ColumnLimit: 100
+IncludeBlocks: Preserve
+NamespaceIndentation: None
+SortIncludes: 'true'
+SortUsingDeclarations: 'true'
+IndentWidth: 4
+TabWidth: 4
+AccessModifierOffset: -4
+IndentCaseLabels: true
+
+...
