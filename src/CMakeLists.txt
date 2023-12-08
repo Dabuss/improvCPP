@@ -8,6 +8,7 @@ add_library(improvenginelib
 
     improvenginelib/Engines/AnimalGenerator.cpp
     improvenginelib/Engines/BodyPartGenerator.cpp
+    improvenginelib/Engines/WordImpactGenerator.cpp
 )
 
 target_include_directories(improvenginelib PUBLIC

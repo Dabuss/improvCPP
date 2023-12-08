@@ -2,6 +2,8 @@
 
 #include "improvenginelib/engines/AnimalGenerator.h"
 #include "improvenginelib/engines/BodyPartGenerator.h"
+#include "improvenginelib/engines/WordImpactGenerator.h"
+
 #include "improvenginelib/Displayer.h"
 #include "improvenginelib/ImpulsionGenerator.h"
 #include "improvenginelib/RandomVectorSampler.h"
@@ -27,10 +29,13 @@ int main(int argc, char* argv[])
         = std::make_shared<AnimalGenerator>(textResources, randomVectorSampler);
     std::shared_ptr<BodyPartGenerator> bodyPartGenerator
         = std::make_shared<BodyPartGenerator>(textResources, randomVectorSampler);
+    std::shared_ptr<WordImpactGenerator> wordImpactGenerator
+        = std::make_shared<WordImpactGenerator>(textResources, randomVectorSampler);
 
     std::vector<std::shared_ptr<IImprovEngineGenerator>> improvEngineGenerators {};
     improvEngineGenerators.push_back(animalGenerator);
     improvEngineGenerators.push_back(bodyPartGenerator);
+    improvEngineGenerators.push_back(wordImpactGenerator);
 
     // Content Displayers
     std::shared_ptr<TextDisplayer> textDisplayer
