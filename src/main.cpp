@@ -1,7 +1,7 @@
 #include <QApplication>
 
-#include "improvenginelib/AnimalGenerator.h"
-#include "improvenginelib/BodyPartGenerator.h"
+#include "improvenginelib/engines/AnimalGenerator.h"
+#include "improvenginelib/engines/BodyPartGenerator.h"
 #include "improvenginelib/Displayer.h"
 #include "improvenginelib/ImpulsionGenerator.h"
 #include "improvenginelib/RandomVectorSampler.h"

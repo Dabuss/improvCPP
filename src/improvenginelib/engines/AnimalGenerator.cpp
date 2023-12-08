@@ -1,4 +1,4 @@
-#include "improvenginelib/AnimalGenerator.h"
+#include "improvenginelib/engines/AnimalGenerator.h"
 
 #include <algorithm>
 #include <fstream>
