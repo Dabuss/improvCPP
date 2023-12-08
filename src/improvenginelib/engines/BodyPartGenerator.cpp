@@ -1,4 +1,4 @@
-#include "improvenginelib/BodyPartGenerator.h"
+#include "improvenginelib/engines/BodyPartGenerator.h"
 
 #include <algorithm>
 #include <fstream>

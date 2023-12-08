@@ -6,8 +6,8 @@ add_library(improvenginelib
     improvenginelib/UIController.cpp
     improvenginelib/RandomVectorSampler.inl
 
-    improvenginelib/AnimalGenerator.cpp
-    improvenginelib/BodyPartGenerator.cpp
+    improvenginelib/Engines/AnimalGenerator.cpp
+    improvenginelib/Engines/BodyPartGenerator.cpp
 )
 
 target_include_directories(improvenginelib PUBLIC
